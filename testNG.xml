@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Fanfare Test Suite">
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+    <test name="FanfareTestSuite">
+        <classes>
+            <class name="fanfare.dev.FractionCodes2.AutoReportGeneratedClass">
+                <methods>
+                    <include name="launchApp" />
+                    <include name="clickProfileButton_Community" />
+                    <include name="clickLoginEarnButton_Community"/>
+                    <include name="waitForHomeToLoad_Home" />
+                    <include name="clickHome_AfterLoadingAppFromCache" />
+                    <include name="clickCancel_InAppOfferPopUp" />
+                    <include name="AllureReportGenerator" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
