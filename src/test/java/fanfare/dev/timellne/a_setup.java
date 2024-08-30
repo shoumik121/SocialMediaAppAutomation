@@ -6,17 +6,21 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.collections.Lists;
 import pro.truongsinh.appium_flutter.FlutterFinder;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class a_setup {
@@ -96,7 +100,7 @@ public class a_setup {
         Thread.sleep(2000);
 
         //insert email
-        find.bySemanticsLabel("Phone Number or Email").sendKeys("manmrmail1@gmail.com");
+        find.bySemanticsLabel("Phone Number or Email").sendKeys("01776633111");
         Assert.assertEquals(find.text("Phone Number or Email").getText(), "Phone Number or Email");
         Thread.sleep(2000);
 
@@ -123,11 +127,6 @@ public class a_setup {
         driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", elementId));
         Thread.sleep(2000);
 
-        //tap My Channel
-        WebElement myChannelId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("My Channel")));
-        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", myChannelId));
-        Thread.sleep(2000);
-
     }
 
     public void toastchecker(String toastMessage) throws InterruptedException{
@@ -149,6 +148,38 @@ public class a_setup {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void scrollToText(String elementXpath) throws InterruptedException{
+
+        int startX = 320; //change
+        int endX = 320;   //these
+        int startY = 1200; //to match your
+        int endY = 800;   //swipe direction
+        Map<String, Object> params = new HashMap<>();
+        params.put("command", "input");
+        params.put("args", Lists.newArrayList("swipe", startX, startY, endX, endY));
+
+        while (driver.findElements(By.xpath(elementXpath)).size() == 0) {
+            driver.executeScript("mobile: shell", params);
+            Thread.sleep(2000);
+        }
+    }
+
+    public void scrollToTextId(String elementAccessId) throws InterruptedException{
+
+        int startX = 320; //change
+        int endX = 320;   //these
+        int startY = 1200; //to match your
+        int endY = 800;   //swipe direction
+        Map<String, Object> params = new HashMap<>();
+        params.put("command", "input");
+        params.put("args", Lists.newArrayList("swipe", startX, startY, endX, endY));
+
+        while (driver.findElements(AppiumBy.accessibilityId(elementAccessId)).size() == 0) {
+            driver.executeScript("mobile: shell", params);
+            Thread.sleep(2000);
         }
     }
 

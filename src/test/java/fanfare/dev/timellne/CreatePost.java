@@ -27,6 +27,10 @@ public class CreatePost {
     private AndroidDriver driver;
     private FlutterFinder find;
 
+    public static String myProfileAccessId = "Ice Cube 2.0 \uD83E\uDDCA\n" +
+            "a moment ago";
+    public static String userNametext = "Channel";
+
     // Appium service
     public static AppiumDriverLocalService service;
 
@@ -54,8 +58,7 @@ public class CreatePost {
         this.find = testEssentials.getFlutterFinder();
     }
 
-    //@Test(priority = 1)
-    @Test (enabled = false)
+    @Test(priority = 1)
     @Description("Create Post With Text Positive Test")
     @Step("Create Post With Text Positive Test")
     public void createPostWithTextPositiveTest() throws InterruptedException {
@@ -83,6 +86,7 @@ public class CreatePost {
                 "👽 Explore scenic trails, enjoy breathtaking views, and connect with fellow nature enthusiasts." +
                 "🍎 Don't miss out on this chance to rejuvenate your mind and body. See you on the trails!";
 
+        //find Description label
         find.bySemanticsLabel("Description").sendKeys(description);
         Assert.assertEquals(find.text(description).getText(), description);
         Thread.sleep(2000);
@@ -100,20 +104,18 @@ public class CreatePost {
         Thread.sleep(5000);
 
         //Open User Profile
-        var profileAccessibilityId = "Fanfare bot\uD83C\uDFB8(aut...\n" +
-                "a moment ago";
+        var profileAccessibilityId = myProfileAccessId;
         WebElement ProfileId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId(profileAccessibilityId)));
         driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", ProfileId));
         Thread.sleep(2000);
 
         //verify User Profile Name
         switchContext("FLUTTER");
-        Assert.assertEquals(find.text("Fanfare bot🎸(automation)").getText(), "Fanfare bot🎸(automation)");
+        Assert.assertEquals(find.text(userNametext).getText(),userNametext);
         Thread.sleep(2000);
     }
 
-    //@Test(priority = 2)
-    @Test (enabled = false)
+    @Test(priority = 2)
     @Description("Create Post With Text Negative Test")
     @Step("Create Post With Text Negative Test")
     public void createPostWithTextNegativeTest() throws InterruptedException {
@@ -153,7 +155,6 @@ public class CreatePost {
     }
 
     //@Test(priority = 3)
-    @Test (enabled = false)
     @Description("Create Post With Text & Image(s) Positive Test")
     @Step("Create Post With Text & Image(s) Positive Test")
     public void createPostWithTextImagesPositiveTest() throws InterruptedException {
@@ -227,15 +228,14 @@ public class CreatePost {
         Thread.sleep(5000);
 
         //Open User Profile
-        var profileAccessibilityId = "Fanfare bot\uD83C\uDFB8(aut...\n" +
-                "a moment ago";
+        var profileAccessibilityId = myProfileAccessId;
         WebElement ProfileId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId(profileAccessibilityId)));
         driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", ProfileId));
         Thread.sleep(2000);
 
         //verify User Profile Name
         switchContext("FLUTTER");
-        Assert.assertEquals(find.text("Fanfare bot🎸(automation)").getText(), "Fanfare bot🎸(automation)");
+        Assert.assertEquals(find.text(userNametext).getText(), userNametext);
         Thread.sleep(2000);
     }
 
@@ -311,7 +311,7 @@ public class CreatePost {
         Thread.sleep(5000);
 
         //Open User Profile
-        var profileAccessibilityId = "Fanfare bot\uD83C\uDFB8(aut...\n" + "a moment ago";
+        var profileAccessibilityId = myProfileAccessId;
         WebElement ProfileId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId(profileAccessibilityId)));
 
         //Handeling App crash with exception handler
@@ -328,12 +328,11 @@ public class CreatePost {
 
         //verify User Profile Name
         switchContext("FLUTTER");
-        Assert.assertEquals(find.text("Fanfare bot🎸(automation)").getText(), "Fanfare bot🎸(automation)");
+        Assert.assertEquals(find.text(userNametext).getText(), userNametext);
         Thread.sleep(2000);
     }
 
     //@Test(priority = 5)
-    @Test (enabled = false)
     @Description("Create Post With Text & Video(s) Positive Test")
     @Step("Create Post With Text & Video(s) Positive Test")
     public void createPostWithTextVideosPositiveTest() throws InterruptedException {
@@ -422,19 +421,18 @@ public class CreatePost {
         Thread.sleep(20000);
 
         //Open User Profile
-        var profileAccessibilityId = "Fanfare bot\uD83C\uDFB8(aut...\n" + "a moment ago";
+        var profileAccessibilityId = myProfileAccessId;
         WebElement ProfileId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId(profileAccessibilityId)));
         driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", ProfileId));
         Thread.sleep(2000);
 
         //verify User Profile Name
         switchContext("FLUTTER");
-        Assert.assertEquals(find.text("Fanfare bot🎸(automation)").getText(), "Fanfare bot🎸(automation)");
+        Assert.assertEquals(find.text(userNametext).getText(), userNametext);
         Thread.sleep(2000);
     }
 
     //@Test(priority = 6)
-    @Test (enabled = false)
     @Description("Create Post With Text & Video(s) Negative Test")
     @Step("Create Post With Text & Video(s) Negative Test")
     public void createPostWithTextVideosNegativeTest() throws InterruptedException {
@@ -512,7 +510,7 @@ public class CreatePost {
         Thread.sleep(2000);
 
         //Open User Profile
-        var profileAccessibilityId = "Fanfare bot\uD83C\uDFB8(aut...\n" + "a moment ago";
+        var profileAccessibilityId = myProfileAccessId;
         WebElement ProfileId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId(profileAccessibilityId)));
 
         //Handeling App crash with exception handler
@@ -529,15 +527,14 @@ public class CreatePost {
 
         //verify User Profile Name
         switchContext("FLUTTER");
-        Assert.assertEquals(find.text("Fanfare bot🎸(automation)").getText(), "Fanfare bot🎸(automation)");
+        Assert.assertEquals(find.text(userNametext).getText(),userNametext);
         Thread.sleep(2000);
     }
 
     @Test(priority = 7)
-    //@Test (enabled = false)
     @Description("Community Top Fresh Post Like Positive Test")
     @Step("Community Top Fresh Post Like Positive Test")
-    public void CommunityTopFreshPostLikeTest() throws InterruptedException {
+    public void communityTopFreshPostLikeTest() throws InterruptedException {
 
         // Initialize the driver (Assuming it's done elsewhere in your actual code)
         // Set the desired capabilities and initialize the driver properly
@@ -547,23 +544,21 @@ public class CreatePost {
 
         // Top One post after reload post 1 without like
         testEssentials.switchContext("NATIVE_APP");
-        driver.findElements(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0))"
-                +".scrollIntoView(new UiSelector()"+".textMatches(\""+"Like"+"\").instance(0))"));
+        testEssentials.scrollToTextId("Like");
 
         // Click the like button & check "Liked" status --LIKE TEST--
         WebElement likeId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Like")));
         driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", likeId));
         testEssentials.switchContext("FLUTTER");
         Assert.assertEquals(find.text("Liked").getText(), "Liked");
-        Thread.sleep(2000);
+        Thread.sleep(4000);
 
     }
 
     @Test(priority = 8)
-    //@Test (enabled = false)
     @Description("Community Top Fresh Post Unlike Positive Test")
     @Step("Community Top Fresh Post Unlike Positive Test")
-    public void CommunityTopFreshPostUnlikeTest() throws InterruptedException {
+    public void communityTopFreshPostUnlikeTest() throws InterruptedException {
 
         // Initialize the driver (Assuming it's done elsewhere in your actual code)
         // Set the desired capabilities and initialize the driver properly
@@ -572,11 +567,307 @@ public class CreatePost {
 
         // SamePost Click the unlike button & check "Like" status --UNLIKE TEST--
         testEssentials.switchContext("NATIVE_APP");
+
+        //back to Community
+        ((AndroidDriver) driver).executeScript("mobile: shell", ImmutableMap.of("command", "input keyevent 4"));
+
+        //go to user timeline from community
+        testEssentials.communityToUserTimeline();
+
+        testEssentials.scrollToTextId("Liked");
+
         WebElement unlikeId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Liked")));
         driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", unlikeId));
-        testEssentials.switchContext("FLUTTER");
-        Assert.assertEquals(find.text("Like").getText(), "Like");
         Thread.sleep(2000);
+    }
+
+    @Test(priority = 9)
+    @Description("Community Top Post Comment Positive Test")
+    @Step("Community Top Post Comment Positive Test")
+    public void communityTopPostCommentPositiveTest() throws InterruptedException {
+
+        // Initialize the driver (Assuming it's done elsewhere in your actual code)
+        // Set the desired capabilities and initialize the driver properly
+        Duration timeout = Duration.ofSeconds(5);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+        // top post click comment
+        testEssentials.switchContext("NATIVE_APP");
+        WebElement commentId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Comment")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", commentId));
+        Thread.sleep(1000);
+
+        //insert comment
+        testEssentials.switchContext("NATIVE_APP");
+        WebElement postCommentId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", postCommentId));
+        Thread.sleep(1000);
+        //here is the comment
+        postCommentId.sendKeys("Robots are commenting on your post this is Twenty First Century Magic! 🤖");
+        Thread.sleep(1000);
+
+        // press comment send button
+        WebElement sendElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText[@text=\"Robots are commenting on your post this is Twenty First Century Magic! \uD83E\uDD16\"]/android.widget.Button")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", sendElementId));
+
+        testEssentials.toastchecker("Commented Successfully");
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 10)
+    @Description("Community Top Post Comment Negative Test")
+    @Step("Community Top Post Comment Negative Test")
+    public void communityTopPostCommentNegativeTest() throws InterruptedException {
+
+        // Initialize the driver (Assuming it's done elsewhere in your actual code)
+        // Set the desired capabilities and initialize the driver properly
+        Duration timeout = Duration.ofSeconds(5);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+        //insert comment
+        testEssentials.switchContext("NATIVE_APP");
+        WebElement postCommentElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", postCommentElementId));
+        //empty Comment test
+
+        // press comment send button
+        WebElement sendElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText/android.widget.Button")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", sendElementId));
+
+        testEssentials.toastchecker("Write Something...");
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 11)
+    @Description("Community Top Post Comment Reply Positive Test")
+    @Step("Community Top Post Comment Reply Positive Test")
+    public void communityTopPostCommentReplyPositiveTest() throws InterruptedException {
+
+        // Initialize the driver (Assuming it's done elsewhere in your actual code)
+        // Set the desired capabilities and initialize the driver properly
+        Duration timeout = Duration.ofSeconds(5);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+        //insert comment
+        testEssentials.switchContext("NATIVE_APP");
+        WebElement postCommentReplyElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc=\"Reply\"]"))); //(//android.view.View[@content-desc="Reply"])[1]
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", postCommentReplyElementId));
+        Thread.sleep(1000);
+        //here is the reply
+        WebElement ReplyElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText")));
+        ReplyElementId.sendKeys("Robots are replying on your comment this is Twenty First Century Magic! 🤖");
+        Thread.sleep(1000);
+        //tap send
+        WebElement ReplySendElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText[@text=\"Robots are replying on your comment this is Twenty First Century Magic! \uD83E\uDD16\"]/android.widget.Button")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", ReplySendElementId));
+        Thread.sleep(1000);
+        //check toast
+        testEssentials.toastchecker("Replied Successfully");
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 12)
+    @Description("Community Top Post Comment Reply Negative Test")
+    @Step("Community Top Post Comment Reply Negative Test")
+    public void communityTopPostCommentReplyNegativeTest() throws InterruptedException {
+
+        // Initialize the driver (Assuming it's done elsewhere in your actual code)
+        // Set the desired capabilities and initialize the driver properly
+        Duration timeout = Duration.ofSeconds(5);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+        //insert comment
+        testEssentials.switchContext("NATIVE_APP");
+        WebElement postCommentReplyElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc=\"Reply\"]"))); //(//android.view.View[@content-desc="Reply"])[1]
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", postCommentReplyElementId));
+        Thread.sleep(1000);
+        //empty reply
+
+        //tap send
+        WebElement ReplySendElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText/android.widget.Button")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", ReplySendElementId));
+        Thread.sleep(1000);
+
+        //check toast
+        testEssentials.toastchecker("Write Something...");
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 13)
+    @Description("Community Top Post like a post-comment Test")
+    @Step("Community Top Post like a post-comment Test")
+    public void communityLikePostCommentTest() throws InterruptedException {
+
+        // Initialize the driver (Assuming it's done elsewhere in your actual code)
+        // Set the desired capabilities and initialize the driver properly
+        Duration timeout = Duration.ofSeconds(5);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+        //Like post-comment
+        testEssentials.switchContext("NATIVE_APP");
+        WebElement postCommentLikeElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//android.view.View[@content-desc=\"Like\"])[1]")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", postCommentLikeElementId));
+        Thread.sleep(2000);
+
+    }
+
+    @Test(priority = 14)
+    @Description("Community Top Post Unlike a post-comment Test")
+    @Step("Community Top Post Unlike a post-comment Test")
+    public void communityUnlikePostCommentTest() throws InterruptedException {
+
+        // Initialize the driver (Assuming it's done elsewhere in your actual code)
+        // Set the desired capabilities and initialize the driver properly
+        Duration timeout = Duration.ofSeconds(5);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+        //UnLike post-comment
+        testEssentials.switchContext("NATIVE_APP");
+        WebElement postCommentUnlikeElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc=\"Liked\"]")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", postCommentUnlikeElementId));
+        Thread.sleep(2000);
+
+    }
+
+    @Test(priority = 15)
+    @Description("Community Top Post like a post-comment-reply Test")
+    @Step("Community Top Post like a post-comment-reply Test")
+    public void communityLikePostCommentReplyTest() throws InterruptedException {
+
+        // Initialize the driver (Assuming it's done elsewhere in your actual code)
+        // Set the desired capabilities and initialize the driver properly
+        Duration timeout = Duration.ofSeconds(5);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+        //Like post-comment-reply
+        testEssentials.switchContext("NATIVE_APP");
+        WebElement postCommentLikeElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//android.view.View[@content-desc=\"Like\"])[2]")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", postCommentLikeElementId));
+        Thread.sleep(2000);
+
+    }
+
+    @Test(priority = 16)
+    @Description("Community Top Post Unlike a post-comment-reply Test")
+    @Step("Community Top Post Unlike a post-comment-reply Test")
+    public void communityUnlikePostCommentReplyTest() throws InterruptedException {
+
+        // Initialize the driver (Assuming it's done elsewhere in your actual code)
+        // Set the desired capabilities and initialize the driver properly
+        Duration timeout = Duration.ofSeconds(5);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+        //UnLike post-comment-reply
+        testEssentials.switchContext("NATIVE_APP");
+        WebElement postCommentUnlikeElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc=\"Liked\"]")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", postCommentUnlikeElementId));
+        Thread.sleep(2000);
+
+    }
+
+    @Test(priority = 17)
+    @Description("User Profile Top Post Deletion Test")
+    @Step("User Profile Top Post Deletion Test")
+    public void userProfileTopPostDeletionTest() throws InterruptedException {
+
+        // Initialize the driver (Assuming it's done elsewhere in your actual code)
+        // Set the desired capabilities and initialize the driver properly
+        Duration timeout = Duration.ofSeconds(5);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+        //click three dot option for post
+        testEssentials.switchContext("NATIVE_APP");
+
+        //back to timeline
+        ((AndroidDriver) driver).executeScript("mobile: shell", ImmutableMap.of("command", "input keyevent 4"));
+        //back to Community
+        ((AndroidDriver) driver).executeScript("mobile: shell", ImmutableMap.of("command", "input keyevent 4"));
+
+        //go to user timeline from community
+        testEssentials.communityToUserTimeline();
+
+        WebElement threeDotElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//android.view.View[@content-desc=\"⛰\uFE0F Discover the Beauty of Nature: Weekend Hiking Adventure!\n" +
+                "#Hiking\"])[1]/android.widget.Button")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", threeDotElementId));
+        Thread.sleep(2000);
+
+        // select delete
+        WebElement deletePostId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Delete")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", deletePostId));
+        Thread.sleep(2000);
+
+        // select ok
+        WebElement okPopUpId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Ok")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", okPopUpId));
+        Thread.sleep(1000);
+
+    }
+
+    @Test(priority = 18)
+    @Description("User Profile Top Post Own Comment Deletion Test")
+    @Step("User Profile Top Post Own Comment Deletion Test")
+    public void userProfileTopPostOwnCommentDeletionTest() throws InterruptedException {
+
+        // Initialize the driver (Assuming it's done elsewhere in your actual code)
+        // Set the desired capabilities and initialize the driver properly
+        Duration timeout = Duration.ofSeconds(5);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        testEssentials.switchContext("NATIVE_APP");
+
+        //back to Community
+        ((AndroidDriver) driver).executeScript("mobile: shell", ImmutableMap.of("command", "input keyevent 4"));
+
+        //go to user timeline from community
+        testEssentials.communityToUserTimeline();
+
+        //scroll to find Comment
+        testEssentials.scrollToText("(//android.widget.ImageView[@content-desc=\"Comment\"])[1]");
+
+        //tap comment
+        WebElement CommentId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Comment")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", CommentId));
+        Thread.sleep(2000);
+
+        //tap post top own comment
+        WebElement tapOwnCommentId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Ice Cube 2.0 \uD83E\uDDCA")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", tapOwnCommentId));
+        Thread.sleep(2000);
+
+        // select delete
+        WebElement deletePostId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Delete")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", deletePostId));
+        Thread.sleep(2000);
+
+        // select ok
+        WebElement okPopUpId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Ok")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", okPopUpId));
+        Thread.sleep(1000);
+    }
+
+    @Test(priority = 19)
+    @Description("User Profile Top Post Other's Comment Deletion Test")
+    @Step("User Profile Top Post Other's Comment Deletion Test")
+    public void userProfileTopPostOtherCommentDeletionTest() throws InterruptedException {
+
+        // Initialize the driver (Assuming it's done elsewhere in your actual code)
+        // Set the desired capabilities and initialize the driver properly
+        Duration timeout = Duration.ofSeconds(5);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+        //tap post top own comment
+        WebElement tapOwnCommentId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Shoumik \uD83E\uDDCA")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", tapOwnCommentId));
+        Thread.sleep(2000);
+
+        // select delete
+        WebElement deletePostId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Delete")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", deletePostId));
+        Thread.sleep(2000);
+
+        // select ok
+        WebElement okPopUpId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Ok")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", okPopUpId));
+        Thread.sleep(1000);
     }
 
     public void switchContext(String context) {

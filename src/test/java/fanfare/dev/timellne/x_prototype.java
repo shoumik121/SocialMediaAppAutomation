@@ -51,59 +51,37 @@ public class x_prototype {
         this.find = testEssentials.getFlutterFinder();
     }
 
-    @Test(priority = 7)
-    @Description("Community Top Fresh Post Like & Unlike Positive Test")
-    @Step("Community Top Fresh Post Like & Unlike Positive Test")
-    public void CommunityTopFreshPostLikeTest() throws InterruptedException {
 
-        // Initialize the driver (Assuming it's done elsewhere in your actual code)
-        // Set the desired capabilities and initialize the driver properly
-        Thread.sleep(20000);
-        Duration timeout = Duration.ofSeconds(5);
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
-
-            // Top One post after reload post 1 without like
-            testEssentials.switchContext("NATIVE_APP");
-            driver.findElements(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0))"
-                    +".scrollIntoView(new UiSelector()"+".textMatches(\""+"Like"+"\").instance(0))"));
-
-            // Click the like button & check "Liked" status --LIKE TEST--
-            WebElement likeId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Like")));
-            driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", likeId));
-            testEssentials.switchContext("FLUTTER");
-            Assert.assertEquals(find.text("Liked").getText(), "Liked");
-            Thread.sleep(2000);
-
-            // SamePost Click the unlike button & check "Like" status --UNLIKE TEST--
-            testEssentials.switchContext("NATIVE_APP");
-            WebElement unlikeId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Liked")));
-            driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", unlikeId));
-            testEssentials.switchContext("FLUTTER");
-            Assert.assertEquals(find.text("Like").getText(), "Like");
-            Thread.sleep(2000);
-    }
-
-    @Test(priority = 8)
-    @Description("Community Top Fresh Post Like & Unlike Positive Test")
-    @Step("Community Top Fresh Post Like & Unlike Positive Test")
-    public void CommunityTopFreshPostUnlikeTest() throws InterruptedException {
+    @Test(priority = 9)
+    //@Test (enabled = false)
+    @Description("Community Top Post Comment Positive Test")
+    @Step("Community Top Post Comment Positive Test")
+    public void CommunityTopPostCommentTest() throws InterruptedException {
 
         // Initialize the driver (Assuming it's done elsewhere in your actual code)
         // Set the desired capabilities and initialize the driver properly
         Duration timeout = Duration.ofSeconds(5);
         WebDriverWait wait = new WebDriverWait(driver, timeout);
 
-        // Top One post after reload post 1 without like
+        // top post click comment
         testEssentials.switchContext("NATIVE_APP");
-        driver.findElements(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0))"
-                +".scrollIntoView(new UiSelector()"+".textMatches(\""+"Liked"+"\").instance(0))"));
+        WebElement unlikeId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Comment")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", unlikeId));
+        Thread.sleep(1000);
 
-        // Click the like button & check "Liked" status --LIKE TEST--
-        WebElement likeId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Liked")));
-        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", likeId));
-        Thread.sleep(2000);
-        testEssentials.switchContext("FLUTTER");
-        Assert.assertEquals(find.text("Like").getText(), "Like");
+        //insert comment
+        testEssentials.switchContext("NATIVE_APP");
+        WebElement postCommentElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", postCommentElementId));
+        //here is the comment
+        postCommentElementId.sendKeys("Robots are commenting on your post this Twenty First Century Magic! 🤖");
+        Thread.sleep(1000);
+
+        // press comment send button
+        WebElement sendElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText[@text=\"Robots are commenting on your post this Twenty First Century Magic! \uD83E\uDD16\"]/android.widget.Button")));
+        driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", sendElementId));
+
+        testEssentials.toastchecker("Post Comment to Post Successful");
         Thread.sleep(2000);
     }
 
