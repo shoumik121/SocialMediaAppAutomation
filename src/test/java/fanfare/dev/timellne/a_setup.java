@@ -68,6 +68,7 @@ public class a_setup {
         caps.setCapability("platformVersion", "11.0"); //Mi device android "11.0"
         caps.setCapability("automationName", "Flutter");
         caps.setCapability("newCommandTimeout", "3000");
+        caps.setCapability("adbExecTimeout", "6000");
         caps.setCapability("deviceName", "5HT8OBE6BIVSCIAM"); //Mi device id "5HT8OBE6BIVSCIAM"
 
         caps.setCapability("unlockType", "pin");
@@ -100,7 +101,7 @@ public class a_setup {
         Thread.sleep(2000);
 
         //insert email
-        find.bySemanticsLabel("Phone Number or Email").sendKeys("01776633111");
+        find.bySemanticsLabel("Phone Number or Email").sendKeys("01776633121");
         Assert.assertEquals(find.text("Phone Number or Email").getText(), "Phone Number or Email");
         Thread.sleep(2000);
 
@@ -156,7 +157,23 @@ public class a_setup {
         int startX = 320; //change
         int endX = 320;   //these
         int startY = 1200; //to match your
-        int endY = 800;   //swipe direction
+        int endY = 900;   //swipe direction
+        Map<String, Object> params = new HashMap<>();
+        params.put("command", "input");
+        params.put("args", Lists.newArrayList("swipe", startX, startY, endX, endY));
+
+        while (driver.findElements(By.xpath(elementXpath)).size() == 0) {
+            driver.executeScript("mobile: shell", params);
+            Thread.sleep(2000);
+        }
+    }
+
+    public void scrollUpToText(String elementXpath) throws InterruptedException{
+
+        int startX = 320; //change
+        int endX = 320;   //these
+        int startY = 1000; //to match your
+        int endY = 1200;   //swipe direction
         Map<String, Object> params = new HashMap<>();
         params.put("command", "input");
         params.put("args", Lists.newArrayList("swipe", startX, startY, endX, endY));
@@ -173,6 +190,22 @@ public class a_setup {
         int endX = 320;   //these
         int startY = 1200; //to match your
         int endY = 800;   //swipe direction
+        Map<String, Object> params = new HashMap<>();
+        params.put("command", "input");
+        params.put("args", Lists.newArrayList("swipe", startX, startY, endX, endY));
+
+        while (driver.findElements(AppiumBy.accessibilityId(elementAccessId)).size() == 0) {
+            driver.executeScript("mobile: shell", params);
+            Thread.sleep(2000);
+        }
+    }
+
+    public void scrollUpToTextId(String elementAccessId) throws InterruptedException{
+
+        int startX = 320; //change
+        int endX = 320;   //these
+        int startY = 1000; //to match your
+        int endY = 1200;   //swipe direction
         Map<String, Object> params = new HashMap<>();
         params.put("command", "input");
         params.put("args", Lists.newArrayList("swipe", startX, startY, endX, endY));

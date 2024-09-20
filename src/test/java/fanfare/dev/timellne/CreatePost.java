@@ -785,7 +785,6 @@ public class CreatePost {
 
         //go to user timeline from community
         testEssentials.communityToUserTimeline();
-
         WebElement threeDotElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//android.view.View[@content-desc=\"⛰\uFE0F Discover the Beauty of Nature: Weekend Hiking Adventure!\n" +
                 "#Hiking\"])[1]/android.widget.Button")));
         driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", threeDotElementId));

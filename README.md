@@ -20,6 +20,13 @@ $mvn allure:serve
 
 ********************************************************
 
+**Upgrade appium** >> npm i -g appium@latest
+
+**Upgrade uiautomator2** >> appium driver update uiautomator2
+
+example: driver uiautomator2 updated: 3.5.2 => 3.7.9
+         driver flutter updated: 2.6.0 => 2.9.2
+
 Installation Guide:
 
 set environment variables and set path
@@ -279,3 +286,26 @@ color: Colors.red,
 Semantics(
 identifier: '${title} show all',
 )
+
+
+### Environment
+
+- Operating system:
+
+- Appium server version (output of `appium --2.11.3`):
+
+- Appium driver(s) and their version(s) (`appium driver list`):
+    - driver uiautomator2 updated: 3.5.2 => 3.7.9
+    - driver flutter updated: 2.6.0 => 2.9.2
+
+- Appium plugin(s) and their version(s) (`appium plugin list`):
+    - appium-reporter-plugin@1.1.0-beta.06
+
+- Node.js version (output of `node --v20.17.0`):
+- `npm` version (output of `npm --10.8.2`):
+- Last component(s) version which did _not_ exhibit the problem: - same pc same specs same versions
+- Platform and version under test: Windows 11
+- Real device or emulator/simulator: Xiaomi Note 10 (2gb)
+
+    RUN APPIUM CMD>               
+appium --log-level debug
