@@ -27,7 +27,7 @@ public class CreatePost {
     private AndroidDriver driver;
     private FlutterFinder find;
 
-    public static String myProfileAccessId = "Ice Cube 2.0 \uD83E\uDDCA\n" +
+    public static String myProfileAccessId = "Shoumik\n" +
             "a moment ago";
     public static String userNametext = "Channel";
 

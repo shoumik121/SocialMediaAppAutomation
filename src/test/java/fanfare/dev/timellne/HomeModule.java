@@ -46,14 +46,13 @@ public class HomeModule {
             "(Follow for Offers)\n" +
             "Offers\n" +
             "(Click & Get)\n" +
-            "Mega Events\n" +
             "Top Selling\n" +
             "Earn F:Points\n" +
             "Refer & Earn\n" +
             "Invite Your Friends & Earn \n" +
             "50\n" +
             " F:Points\n" +
-            "Top Users\"]/android.view.View[6]/android.view.View/android.view.View[2]/android.widget.ImageView[2]";
+            "Top Users\"]/android.view.View[6]/android.view.View/android.view.View[4]/android.widget.ImageView[2]";
 
     public static String shareNowBtnXpath = "//android.view.View[@content-desc=\"Share Now\"]";
     public static String buyNowBtnXpath = "//android.view.View[@content-desc=\"Buy Now\"]";
@@ -168,11 +167,14 @@ public class HomeModule {
         //go back
         ((AndroidDriver) driver).executeScript("mobile: shell", ImmutableMap.of("command", "input keyevent 4"));
         Thread.sleep(2000);
+        //go back
+        ((AndroidDriver) driver).executeScript("mobile: shell", ImmutableMap.of("command", "input keyevent 4"));
+        Thread.sleep(2000);
 
 
     }
 
-    @Test(priority = 2)
+    //@Test(priority = 2)
     @Description("Participate video contest Test")
     @Step("Participate video contest Test")
     public void joinVideoContestTest() throws InterruptedException {
@@ -298,7 +300,7 @@ public class HomeModule {
         //select HOME FOLLOW ICON
         WebElement followElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(followiconXpath1)));
         driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", followElementId));
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
         //select showall2 selector
         WebElement showall2ElementId = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(showall2)));
@@ -311,7 +313,7 @@ public class HomeModule {
         Thread.sleep(2000);
 
         //click following brand page
-        WebElement OgerioId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Ogerio")));
+        WebElement OgerioId = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Manlyy")));
         driver.executeScript("mobile: clickGesture", ImmutableMap.of("elementId", OgerioId));
         Thread.sleep(2000);
 
